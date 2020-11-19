@@ -1,0 +1,8 @@
+Number of hotel Floors: 1
+Floor number: 1
+Unoccupied rooms: 2
+Occupied rooms: 2
+Total hotel rooms: 4
+Total Occupied Rooms: 2
+Total Unoccupied: 2
+Percentage of occupied rooms: 50 %
