@@ -1,10 +1,11 @@
 /// Geoffery Blackard
 #include <iostream>
-using namespace std;
 #include <fstream>
 #include <cstring>
 #include <cctype>
-
+#include <cstdlib>
+#include <iomanip> 
+using namespace std;
 
 
 
@@ -46,16 +47,20 @@ int containsOther(char nameArray[]) {
 	}
 	return count;
 }
+// Add member function add data to the Member structure
 void addNewMember() {
 	Member person;
 	char again;
+	const int MIN_VALUE = 100000;
+	const int MAX_VALUE = 500000;
 	
-	fstream people("MemberData.dat", ios::out | ios::binary);
+	fstream people("MemberData.dat", ios::out | ios::binary | ios::app);
+	
 
 	do
 	{
-		cout << "Enter the following information. " << endl;
-		cout << "First Name: " << endl;
+		cout << "\n\nEnter the following information. " << endl;
+		cout << "\nFirst Name: " << endl;
 		cin.ignore();
 		cin.getline(person.firstName, NAME_SIZE);
 			
@@ -102,9 +107,18 @@ void addNewMember() {
 		}
 		cin.ignore();
 
+		person.accountNumber = (rand() % (MAX_VALUE - MIN_VALUE + 1)) + MIN_VALUE;;
+
 		people.write(reinterpret_cast<char*>(&person), sizeof(person));
 
-		cout << "Do you want to enter another record? ";
+		cout << setw(18) << "\n\nThe following member information was added." << endl;
+		cout << setw(18) <<"Account Number: " << person.accountNumber << endl;
+		cout << setw(18) <<"First Name: " << person.firstName << endl;
+		cout << setw(18) <<"Last Name: " << person.lastName << endl;
+		cout << setw(18) <<"Email Address: " << person.emailAddress << endl;
+		cout << setw(18) <<"Balance: " << person.accountBalance << endl;
+
+		cout << "\nDo you want to enter another record? ";
 		cin >> again;
 		cin.ignore();
 
@@ -112,13 +126,43 @@ void addNewMember() {
 	people.close();
 }
 
+void accountBalance( int n){
+	Member info;
+	bool flag = false;
+	ifstream inFile;
+	inFile.open("MemberData.dat", ios::binary);
+	if (!inFile)
+	{
+		cout << "File could not be open !! Press any Key...";
+		return;
+	}
+	cout << "\nBALANCE DETAILS\n";
 
+	while (inFile.read(reinterpret_cast<char*> (&info), sizeof(info)))
+	{
+		if (info.accountNumber == n)
+		{
+			cout << setw(18) << "Account Number: " << info.accountNumber << endl;
+			cout << setw(18) << "First Name: " << info.firstName << endl;
+			cout << setw(18) << "Last Name: " << info.lastName << endl;
+			cout << setw(18) << "Email Address: " << info.emailAddress << endl;
+			cout << setw(18) << "Balance: " << info.accountBalance << endl <<"\n\n";
+			flag = true;
+		}
+	}
+	inFile.close();
+	if (flag == false)
+		cout << "\n\nAccount number does not exist";
+
+
+}
 
 
 int main() {
 
 	char welcomeMenu;
 	bool welcomMenuQuit = true;
+	int num;
 
 	do
 	{
@@ -133,7 +177,9 @@ int main() {
 
 			break;
 		case 'B':
-		case 'b': cout << "We will now begin to grade in the Quiz category\n";
+		case 'b': cout << "Enter Member Account Number.\n";
+			cin >> num;
+			accountBalance(num);
 			break;
 		case 'C':
 		case 'c': cout << "We will now begin to grade in the Exam category\n";
