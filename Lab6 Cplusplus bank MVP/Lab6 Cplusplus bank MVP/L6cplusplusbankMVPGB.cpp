@@ -126,7 +126,7 @@ void addNewMember() {
 		cout << setw(18) <<"First Name: " << person.firstName << endl;
 		cout << setw(18) <<"Last Name: " << person.lastName << endl;
 		cout << setw(18) <<"Email Address: " << person.emailAddress << endl;
-		cout <<"Balance: $" << person.accountBalance << endl;
+		cout << setw(19) << setprecision(2) << fixed <<"Balance: $" << person.accountBalance << endl;
 
 		cout << "\nDo you want to enter another record? ";
 		cin >> again;
@@ -156,7 +156,7 @@ void accountBalance( int n){
 			cout << setw(18) << "First Name: " << info.firstName << endl;
 			cout << setw(18) << "Last Name: " << info.lastName << endl;
 			cout << setw(18) << "Email Address: " << info.emailAddress << endl;
-			cout << setw(18) << "Balance: $" << info.accountBalance << endl <<"\n\n";
+			cout << setw(19) << setprecision(2) << fixed << "Balance: $" << info.accountBalance << endl <<"\n\n";
 			flag = true;
 		}
 	}
@@ -190,7 +190,7 @@ void widthdraw(int n) {
 			cout << setw(18) << "First Name: " << info.firstName << endl;
 			cout << setw(18) << "Last Name: " << info.lastName << endl;
 			cout << setw(18) << "Email Address: " << info.emailAddress << endl;
-			cout << " Current Balance: $" << info.accountBalance << endl << "\n\n";
+			cout << setw(19) << setprecision(2) << fixed << " Current Balance: $" << info.accountBalance << endl << "\n\n";
 			cout << "\n\n\tTO WITHDRAW AMOUNT ";
 			cout << "\n\nEnter the ammount you would like to withdraw." << endl;
 			cin >> amt;
