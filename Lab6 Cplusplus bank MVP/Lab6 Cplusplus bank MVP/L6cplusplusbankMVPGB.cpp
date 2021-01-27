@@ -65,7 +65,7 @@ void addNewMember() {
 		cout << "\nEnter Member Account Number" << endl;
 
 		cin>>person.accountNumber;
-		while (!cin || cin.fail())
+		while (!cin || cin.fail() || person.accountNumber < 0)
 		{
 			cout << "\nPlease enter a number." << endl;
 			cin.clear(); // reset failbit
@@ -243,7 +243,7 @@ int main() {
 		case 'B':
 		case 'b': cout << "Enter Member Account Number.\n";
 			cin >> num;
-			while (!cin || cin.fail())
+			while (!cin || cin.fail() || num < 0)
 			{
 				cout << "Please enter a number." << endl;
 				cin.clear(); // reset failbit
@@ -255,7 +255,7 @@ int main() {
 		case 'C':
 		case 'c': cout << "Enter Member Account Number.\n";
 			cin >> num;
-			while (!cin || cin.fail())
+			while (!cin || cin.fail() || num < 0)
 			{
 				cout << "Please enter a number." << endl;
 				cin.clear(); // reset failbit
