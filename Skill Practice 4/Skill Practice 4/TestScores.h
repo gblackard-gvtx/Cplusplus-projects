@@ -33,9 +33,9 @@ TestScores::TestScores()
 
 TestScores::TestScores(int s1, int s2, int s3)
 {
-	scores[1] = s1;
-	scores[2]= s2;
-	scores[3] = s3;
+	scores[0] = s1;
+	scores[1]= s2;
+	scores[2] = s3;
 }
 
 void TestScores::setTestScores()
